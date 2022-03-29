@@ -7,33 +7,13 @@
 
   <groupId>com.xb</groupId>
   <artifactId>im</artifactId>
+  <packaging>pom</packaging>
   <version>0.0.1-SNAPSHOT</version>
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.6.5</version>
-    <relativePath/> <!-- lookup parent from repository -->
-  </parent>
-
-  <dependencies>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty-all</artifactId>
-      <version>4.1.72.Final</version>
-    </dependency>
-
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.18</version>
-    </dependency>
-  </dependencies>
+  <modules>
+    <module>im-server</module>
+    <module>im-client</module>
+    <module>common</module>
+  </modules>
 
 </project>
