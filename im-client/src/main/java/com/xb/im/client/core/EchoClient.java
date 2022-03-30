@@ -1,5 +1,6 @@
 package com.xb.im.client.core;
 
+import com.xb.im.client.core.handler.HeartbeatReqHandler;
 import com.xb.im.client.core.handler.LoginAuthReqHandler;
 import com.xb.im.common.decoder.NettyMessageDecoder;
 import com.xb.im.common.encoder.NettyMessageEncoder;
@@ -40,6 +41,7 @@ public final class EchoClient {
                   p.addLast(new NettyMessageDecoder(1024 * 1024, 4, 4));
                   p.addLast(new NettyMessageEncoder(new MessagePack()));
                   p.addLast(new LoginAuthReqHandler());
+                  p.addLast(new HeartbeatReqHandler());
                 }
               });
 

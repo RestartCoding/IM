@@ -9,7 +9,11 @@ public enum MessageType {
   LOGIN_REQ((byte) 0),
 
   /** 登录响应 */
-  LOGIN_RESP((byte) 1);
+  LOGIN_RESP((byte) 1),
+
+  HEARTBEAT_REQ((byte) 2),
+
+  HEARTBEAT_RESP((byte) 3);
 
   private byte value;
 

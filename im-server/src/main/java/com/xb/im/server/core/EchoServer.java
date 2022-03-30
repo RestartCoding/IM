@@ -2,6 +2,7 @@ package com.xb.im.server.core;
 
 import com.xb.im.common.decoder.NettyMessageDecoder;
 import com.xb.im.common.encoder.NettyMessageEncoder;
+import com.xb.im.server.handler.HeartBeatRespHandler;
 import com.xb.im.server.handler.LoginAuthRespHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -36,6 +37,7 @@ public final class EchoServer {
                   p.addLast(new NettyMessageDecoder(1024 * 1024, 4, 4));
                   p.addLast(new NettyMessageEncoder(new MessagePack()));
                   p.addLast(new LoginAuthRespHandler());
+                  p.addLast(new HeartBeatRespHandler());
                 }
               });
 
