@@ -14,6 +14,7 @@
     <module>im-server</module>
     <module>im-client</module>
     <module>common</module>
+    <module>http-server</module>
   </modules>
 
 </project>

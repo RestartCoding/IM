@@ -5,6 +5,7 @@ import com.xb.im.common.entity.NettyMessage;
 import com.xb.im.common.enums.MessageType;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.util.AttributeKey;
 
 /**
  * @author xiabiao
@@ -17,8 +18,13 @@ public class HeartBeatRespHandler extends ChannelInboundHandlerAdapter {
     NettyMessage message = (NettyMessage) msg;
     if (message.getHeader() != null
         && message.getHeader().getType() == MessageType.HEARTBEAT_REQ.getValue()) {
-      System.out.println("received client heart beat message : " + message);
-      ctx.writeAndFlush(buildHeartResp());
+      if (ctx.channel().hasAttr(AttributeKey.valueOf("authenticated"))) {
+        System.out.println("received client heart beat message : " + message);
+        ctx.writeAndFlush(buildHeartResp());
+      } else {
+        // 未登录，关闭连接
+        ctx.close();
+      }
     } else {
       ctx.fireChannelRead(msg);
     }

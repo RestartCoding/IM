@@ -17,8 +17,8 @@ public class NettyMessageEncoder extends MessageToMessageEncoder<NettyMessage> {
 
   private MessagePack messagePack;
 
-  public NettyMessageEncoder(MessagePack messagePack) {
-    this.messagePack = messagePack;
+  public NettyMessageEncoder() {
+    this.messagePack = new MessagePack();
   }
 
   @Override
@@ -47,7 +47,7 @@ public class NettyMessageEncoder extends MessageToMessageEncoder<NettyMessage> {
                   throw new RuntimeException(e);
                 }
               });
-    }else {
+    } else {
       buf.writeInt(0);
     }
     if (msg.getBody() != null) {
