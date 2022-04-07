@@ -44,7 +44,7 @@ public class HttpFileServer {
                   pipeline.addLast(new HttpFileServerHandler());
                 }
               });
-      ChannelFuture future = serverBootstrap.bind("127.0.0.1", port).sync();
+      ChannelFuture future = serverBootstrap.bind("10.104.150.57", port).sync();
       future.channel().closeFuture().sync();
     } finally {
       boss.shutdownGracefully();
